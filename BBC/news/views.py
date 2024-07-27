@@ -29,7 +29,7 @@ class PostDetail(DetailView):
     context_object_name = 'Post'
 
 class NewsCreate(PermissionRequiredMixin, CreateView):
-    permission_required = ('news.add_news')
+    permission_required = ('news.add_post')
     form_class = PostForm
     model = Post
     template_name = 'news_create.html'
@@ -45,13 +45,13 @@ class NewsCreate(PermissionRequiredMixin, CreateView):
         return super().form_valid(form)
 
 class NewsUpdate(PermissionRequiredMixin, UpdateView):
-    permission_required = ('news.change_news')
+    permission_required = ('news.change_post')
     form_class = PostForm
     model = Post
     template_name = 'news_create.html'
 
 class NewsDelete(PermissionRequiredMixin, DeleteView):
-    permission_required = ('news.delete_news')
+    permission_required = ('news.delete_post')
     model = Post
     template_name = 'news_delete.html'
     success_url = reverse_lazy('post_list')

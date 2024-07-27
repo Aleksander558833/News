@@ -28,7 +28,7 @@ Post
                 <td>Заголовок</td>
                 <td>Описание</td>
 
-                {% if perms.news.change_news or perms.news.delete_news %}
+                {% if perms.news.change_post or perms.news.delete_post %}
                 <td>Действия</td>
                 {% endif %}
             </tr>
@@ -41,11 +41,11 @@ Post
                 <td>{{ post.text|truncatewords:20 }}</td>
 
                 <td>
-                    {% if perms.news.change_news %}
-                    <a href="{% url 'news_update' post.id %}">Изменить |</a>
+                    {% if perms.news.change_post %}
+                    <a href="{% url 'news_update' post.id %}">Изменить </a>
                     {% endif %}
 
-                    {% if perms.delete_news %}
+                    {% if perms.delete_post %}
                     <a href="{% url 'news_delete' post.id %}">Удалить</a>
                     {% endif %}
                 </td>
