@@ -153,5 +153,37 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_FORMS = {"signup": "accounts.forms.CustomSignupForm"}
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "kolchinaleksandr2432@yandex.ru"
+EMAIL_HOST_PASSWORD = "vrzqjbvxycylvliv"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_SUBJECT_PREFIX = 'Внимание!'
+
+DEFAULT_FROM_EMAIL = "kolchinaleksandr2432@yandex.ru"
+
+SERVER_EMAIL = "kolchinaleksandr2432@yandex.ru"
+MANAGERS = (
+    ('Aleksandr', 'alexander_2424@mail.ru'),
+)
+ADMINS = (
+    ('Polina', 'polinakolchina98@mail.ru'),
+)
+
+# В панцирях черепах найдены радиоактивные следы давних ядерных испытаний
+
+# Панцири черепах, как и ногтевые пластины, способны сохранять информацию об уровне радиации.
+# Такие выводы сделали американские физики в результате испытаний, результаты которых были опубликованы в журнале
+# PNAS Nexus.
+# Так, по данным учёных, изучение панцирей черепах даёт возможность определить приблизительные даты ядерных испытаний
+# на тех территориях, где проживали эти существа. Речь также идёт и о других событиях, имеющих отношение к
+# радиоактивным загрязнениям.
+# Всё дело в том, что черепаший панцирь состоит из кератиновых слоёв, нарастающих один за другим.
+# В них сохраняются примеси, витавшие в атмосфере периода, в который формировались панцирные слои.
+# Как оказалось в ходе исследования, в кератин способны проникать и радиоактивные изотопы.
