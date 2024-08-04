@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 def my_job():
     today = timezone.now()
-    last_week = today - datetime.timedelta(days=20)
+    last_week = today - datetime.timedelta(days=7)
     posts = Post.objects.filter(time_in__gte=last_week)
     categories = set(posts.values_list('category', flat=True))
     subscribers = set(Subscription.objects.filter(category__in=categories).values_list('user__email', flat=True))
@@ -27,7 +27,7 @@ def my_job():
     html_content = render_to_string(
         'daily_post.html',
         {
-            'link': settings.SITE_ID,
+            'link': settings.SITE_URL,
             'posts': posts,
         }
     )
@@ -55,7 +55,7 @@ class Command(BaseCommand):
 
         scheduler.add_job(
             my_job,
-            trigger=CronTrigger(second='*/5'),
+            trigger=CronTrigger(second='*/15'),
             id="my_job",  # The `id` assigned to each job MUST be unique
             max_instances=1,
             replace_existing=True,
@@ -65,7 +65,7 @@ class Command(BaseCommand):
         scheduler.add_job(
             delete_old_job_executions,
             trigger=CronTrigger(
-                day_of_week="mon", hour="00", minute="00"
+                day_of_week="fri", hour="18", minute="00"
             ),
             id="delete_old_job_executions",
             max_instances=1,
