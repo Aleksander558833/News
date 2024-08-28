@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Exists, OuterRef
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
+from django.core.cache import cache
 
 class PostList(ListView):
     model = Post
@@ -31,6 +32,14 @@ class PostDetail(DetailView):
     model = Post
     template_name = 'posts.html'
     context_object_name = 'Post'
+
+    def get_object(self, *args, **kwargs):
+        obj = cache.get(f'Post-{self.kwargs["pk"]}', None)
+
+        if not obj:
+            obj = super().get_object(queryset=self.queryset)
+            cache.set(f'Post-{self.kwargs["pk"]}', obj)
+        return obj
 
 class NewsCreate(PermissionRequiredMixin, CreateView):
     permission_required = ('news.add_post')

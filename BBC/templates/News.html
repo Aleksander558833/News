@@ -42,7 +42,7 @@ Post
 
                 <td>
                     {% if perms.news.change_post %}
-                    <a href="{% url 'news_update' post.id %}">Изменить </a>
+                    <a href="{% url 'news_update' post.id %}">Изменить  </a>
                     {% endif %}
 
                     {% if perms.delete_post %}

@@ -14,7 +14,7 @@ import time
 def post_created(pk):
 
     post = Post.objects.get(id=pk)
-    categories = post.categories_post.all()
+    categories = post.category.all()
 
     emails = User.objects.filter(
             subscriptions__category__in=categories
@@ -25,7 +25,7 @@ def post_created(pk):
     subject = f'Новая статья в категории {', '.join([f'{i}' for i in categories])}'
 
     html_content = (
-            f'Название: {post.name_post}<br>'
+            f'Название: {post.title}<br>'
             f'<a href="http://127.0.0.1{post.get_absolute_url()}">'
             f'Ссылка на пост</a>'
         )
