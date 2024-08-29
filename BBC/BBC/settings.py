@@ -98,12 +98,8 @@ WSGI_APPLICATION = 'BBC.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'news',
-        'USER': 'postgres',
-        'PASSWORD': 'Sanyaept28!',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     },
 }
 
@@ -224,13 +220,13 @@ LOGGING = {
         },
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse',
-        }
+        },
     },
 
     'handlers': {
         'console': {
             'level': 'DEBUG',
-            'filter': ['require_debug_true'],
+            'filters': ['require_debug_true'],
             'formatter': 'debug_form',
             'class': 'logging.StreamHandler',
         },
@@ -254,21 +250,21 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'logging.FileHandler',
             'formatter': 'general_form',
-            'filename': 'general.log',
+            'filename': os.path.join(BASE_DIR, 'general.log'),
         },
 
         'errors_log': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
             'formatter': 'error_form',
-            'filename': 'errors.log',
+            'filename': os.path.join(BASE_DIR, 'errors.log'),
         },
 
         'security_log': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'general_form',
-            'filename': 'security.log',
+            'filename': os.path.join(BASE_DIR, 'security.log'),
         },
 
         'mail': {
@@ -276,7 +272,7 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler',
             'formatter': 'warning_form',
-        }
+        },
     },
 
     'loggers': {
@@ -288,25 +284,25 @@ LOGGING = {
 
         'django.request': {
             'handlers': ['mail', 'errors_log'],
-            'level': 'ERROR',
-            'propagate': False,
+            'level': 'INFO',
+            'propagate': True,
         },
 
         'django.server': {
             'handlers': ['mail', 'errors_log'],
-            'level': 'ERROR',
+            'level': 'INFO',
             'propagate': False,
         },
 
         'django.template': {
             'handlers': ['errors_log'],
-            'level': 'ERROR',
+            'level': 'INFO',
             'propagate': False,
         },
 
         'django.db.backends': {
             'handlers': ['errors_log'],
-            'level': 'ERROR',
+            'level': 'INFO',
             'propagate': False,
         },
 
