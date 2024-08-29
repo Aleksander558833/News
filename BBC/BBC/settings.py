@@ -201,7 +201,7 @@ CACHES = {
 
 LOGGING = {
     'version': 1,
-    'disable_existing_logger': False,
+    'disable_existing_loggers': False,
     'style': '{',
     'formatters': {
         'debug_form': {
@@ -231,27 +231,27 @@ LOGGING = {
         'console': {
             'level': 'DEBUG',
             'filter': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
             'formatter': 'debug_form',
+            'class': 'logging.StreamHandler',
         },
 
         'console_warning': {
             'level': 'WARNING',
-            'filter': ['require_debug_true'],
+            'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'warning_form',
         },
 
         'console_error': {
             'level': 'ERROR',
-            'filter': ['require_debug_true'],
+            'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'error_form',
         },
 
         'general_log': {
             'level': 'INFO',
-            'filter': ['require_debug_false'],
+            'filters': ['require_debug_false'],
             'class': 'logging.FileHandler',
             'formatter': 'general_form',
             'filename': 'general.log',
@@ -273,7 +273,7 @@ LOGGING = {
 
         'mail': {
             'level': 'ERROR',
-            'filter': 'require_debug_false',
+            'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler',
             'formatter': 'warning_form',
         }
@@ -281,7 +281,7 @@ LOGGING = {
 
     'loggers': {
         'django': {
-            'handlers': ['console_warning', 'console_error', 'general_log'],
+            'handlers': ['console', 'console_warning', 'console_error', 'general_log'],
             'level': 'DEBUG',
             'propagate': True,
         },
@@ -315,5 +315,5 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
-    }
+    },
 }
