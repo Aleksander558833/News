@@ -2,14 +2,16 @@
 
 {% load custom_tags %}
 
+{% load i18n %}
+
 {% block title %}
 Post
 {% endblock title %}
 
 
 {% block content %}
-    <h1>Все новости</h1>
-    <h2>Количество новостей {{ news|length }}</h2>
+    <h1>{% trans "Все новости" %}</h1>
+    <h2>{% trans "Количество новостей" %} {{ news|length }}</h2>
 
     <form action="" method="get">
         {{ filterset.form.as_p }}
@@ -18,18 +20,18 @@ Post
 
     <hr>
     {% if perms.news.add_post %}
-    <a href="{% url 'news_create' %}">Добавить новость</a>
+    <a href="{% url 'news_create' %}">{% trans "Добавить новость" %}</a>
     {% endif %}
     {% if news %}
         <table cellpadding="15" width="95%" style="margin-top: 35px">
             <tr>
-                <td>Дата публикации</td>
-                <td>Автор</td>
-                <td>Заголовок</td>
-                <td>Описание</td>
+                <td>{% trans "Дата публикации" %}</td>
+                <td>{% trans "Автор" %}</td>
+                <td>{% trans "Заголовок" %}</td>
+                <td>{% trans "Описание" %}</td>
 
                 {% if perms.news.change_post or perms.news.delete_post %}
-                <td>Действия</td>
+                <td>{% trans "Действия" %}</td>
                 {% endif %}
             </tr>
 
@@ -42,18 +44,18 @@ Post
 
                 <td>
                     {% if perms.news.change_post %}
-                    <a href="{% url 'news_update' post.id %}">Изменить  </a>
+                    <a href="{% url 'news_update' post.id %}">{% trans "Изменить" %}  </a>
                     {% endif %}
 
                     {% if perms.delete_post %}
-                    <a href="{% url 'news_delete' post.id %}">Удалить</a>
+                    <a href="{% url 'news_delete' post.id %}">{% trans "Удалить" %}</a>
                     {% endif %}
                 </td>
             </tr>
             {% endfor %}
         </table>
     {% else %}
-        <h2>Новостей нет!</h2>
+        <h2>{% trans "Новостей нет!" %}</h2>
     {% endif %}
 
     {% if page_obj.has_previous %}

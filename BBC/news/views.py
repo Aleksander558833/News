@@ -87,6 +87,7 @@ class ArticleDelete(PermissionRequiredMixin, DeleteView):
     template_name = 'article_delete.html'
     success_url = reverse_lazy('post_list')
 
+
 @login_required
 @csrf_protect
 def subscriptions(request):
