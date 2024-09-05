@@ -1,0 +1,14 @@
+2024-08-29 21:57:52,275 INFO autoreload Watching for file changes with StatReloader
+2024-08-29 21:57:52,978 INFO basehttp "GET /news/ HTTP/1.1" 200 5475
+2024-08-29 21:59:30,890 INFO basehttp "GET /news/ HTTP/1.1" 200 5475
+2024-08-29 21:59:32,450 INFO basehttp "GET /news/create/ HTTP/1.1" 200 4303
+2024-08-29 21:59:45,496 WARNING log Forbidden (CSRF token missing.): /news/create/
+2024-08-29 21:59:45,497 WARNING basehttp "POST /news/create/ HTTP/1.1" 403 2505
+2024-08-29 22:00:06,552 INFO basehttp "GET /news/ HTTP/1.1" 200 5475
+2024-08-29 22:00:35,513 INFO autoreload C:\Users\HP\Desktop\News\BBC\BBC\settings.py changed, reloading.
+2024-08-29 22:00:38,544 INFO autoreload Watching for file changes with StatReloader
+2024-08-29 22:01:15,957 INFO autoreload C:\Users\HP\Desktop\News\BBC\BBC\settings.py changed, reloading.
+2024-08-29 22:01:19,273 INFO autoreload Watching for file changes with StatReloader
+2024-08-29 22:01:52,103 INFO autoreload C:\Users\HP\Desktop\News\BBC\BBC\settings.py changed, reloading.
+2024-08-29 22:01:55,014 INFO autoreload Watching for file changes with StatReloader
+2024-08-29 22:05:25,312 INFO autoreload C:\Users\HP\Desktop\News\BBC\BBC\settings.py changed, reloading.

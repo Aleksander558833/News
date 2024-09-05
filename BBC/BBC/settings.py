@@ -69,7 +69,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'BBC.urls'
 
-LOCALE_PATH = [
+LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale')
 ]
 
@@ -135,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
