@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.yandex',
     'django_apscheduler',
+
 ]
 
 SITE_ID = 1
@@ -65,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'basic.middlewares.TimeZoneMiddleware',
 ]
 
 ROOT_URLCONF = 'BBC.urls'

@@ -2,6 +2,7 @@
 
 {% load custom_filters %}
 
+{% load i18n %}
 
 {% block title %}
 Post
@@ -12,10 +13,10 @@ Post
 {% if Post %}
         <table width="100%" style="margin-top: 35px">
             <tr>
-                <td>Дата публикации</td>
-                <td>Автор</td>
-                <td>Заголовок</td>
-                <td>Описание</td>
+                <td>{% trans "Дата публикации" %}</td>
+                <td>{% trans "Автор" %}</td>
+                <td>{% trans "Заголовок" %}</td>
+                <td>{% trans "Описание" %}</td>
             </tr>
 
             <tr>

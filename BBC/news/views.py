@@ -6,9 +6,13 @@ from .forms import PostForm
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.db.models import Exists, OuterRef
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from django.core.cache import cache
+from django.utils.timezone import timezone
+from datetime import datetime
+
+import pytz
 
 class PostList(ListView):
     model = Post
@@ -26,7 +30,15 @@ class PostList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset
+        context = {
+            'current_time': timezone.localtime(timezone.now()),
+            'timezones': pytz.common_timezones  # добавляем в контекст все доступные часовые пояса
+        }
         return context
+
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/')
 
 class PostDetail(DetailView):
     model = Post
