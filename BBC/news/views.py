@@ -10,6 +10,8 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from django.core.cache import cache
 from django.utils import timezone
+from rest_framework import viewsets, permissions
+from serializers import *
 
 import pytz
 
@@ -127,3 +129,26 @@ def subscriptions(request):
         'subscriptions.html',
         {'categories': categories_with_subscriptions},
     )
+
+class NewsViewset(viewsets.ModelViewSet):
+    serializer_class = NewsSerializer
+
+    def get_queryset(self):
+        if self.request.path == '/api/news/':
+            queryset = Post.objects.filter(field='NW')
+        else:
+            queryset = Post.objects.filter(field='AR')
+        return queryset
+
+class CategoryViewset(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class AuthorViewset(viewsets.ModelViewSet):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+class UserViewset(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

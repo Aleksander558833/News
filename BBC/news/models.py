@@ -62,8 +62,6 @@ class Post(models.Model):
         cache.delete(f'Post-{self.pk}')
 
 
-
-
 class PostCategory(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
